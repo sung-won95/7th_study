@@ -1,9 +1,6 @@
 package com.example.study2.user.controller;
 
 import com.example.study2.user.entity.User;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,8 +13,6 @@ public class UserController {
 
     @GetMapping("/user/{userId}")
     public User readUser(@PathVariable Integer userId){
-
-
         return this.userList.get(userId);
     }
 
@@ -28,7 +23,6 @@ public class UserController {
 
     @PostMapping("/user")
     public User createUser(@RequestBody User user){
-
         this.userList.add(user);
 
         return user;
