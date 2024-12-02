@@ -34,4 +34,9 @@ public class User {
     public void createUUID(){
         this.uuid = UUID.randomUUID().toString();
     }
+
+    public void updateByDTO(UserDTO userDTO){
+        this.name = userDTO.getName();
+        this.password = userDTO.getPassword();
+    }
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -40,4 +42,28 @@ public class UserService {
     public User checkUserBySession(String uuid){
         return userRepository.findByUuid(uuid).orElseThrow(EntityNotFoundException::new);
     }
+
+    public List<User> findAllUserByDatabase(){
+        return userRepository.findAll();
+    }
+
+    public User findOneUser(Long id){
+        return  userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public User updateUserById(Long id, UserDTO userDTO){
+        User findUser = this.findOneUser(id);
+
+        findUser.updateByDTO(userDTO);
+        userRepository.save(findUser);
+
+        return findUser;
+    }
+
+    public void deleteUserById(Long id){
+        userRepository.deleteById(id);
+    }
+
+
+
 }
