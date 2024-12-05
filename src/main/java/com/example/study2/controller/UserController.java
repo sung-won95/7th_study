@@ -20,10 +20,10 @@ public class UserController {
 
     final UserService userService;
 
-    UserController(UserService userService){
+    UserController(UserService userService)
+    {
         this.userService = userService;
     }
-
     @GetMapping("/session")
     public String test(HttpServletRequest request){
         HttpSession returnString = request.getSession(false);
