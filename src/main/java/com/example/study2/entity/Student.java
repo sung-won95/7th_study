@@ -22,7 +22,11 @@ public class Student {
     private String name;
 
     // 연관관계 설정
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "student",
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
+            orphanRemoval = true
+            )
     private List<Enrollment> enrollments = new ArrayList<>();
 
     // Getter, Setter
